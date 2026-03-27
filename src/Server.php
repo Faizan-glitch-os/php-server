@@ -1,6 +1,6 @@
 <?php
 
-namespace My\Code\PHPServer;
+namespace My\Coded\PHPServer;
 
 use Exception;
 

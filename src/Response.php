@@ -1,6 +1,6 @@
 <?php
 
-namespace My\Code\PHPServer;
+namespace My\Coded\PHPServer;
 
 class Response
 {
@@ -83,5 +83,18 @@ class Response
     public function buildHeaderString()
     {
         $lines = [];
+
+        $lines[] = "HTTP/1.1 " . $this->status . " " . static::$statusCodes[$this->status];
+
+        foreach ($this->headers as $key => $value) {
+            $lines[] = $key . ": " . $value;
+        }
+
+        return implode(" \r\n", $lines) . "\r\n\r\n";
+    }
+
+    public function __toString()
+    {
+        return $this->buildHeaderString() . $this->body;
     }
 }
